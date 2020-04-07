@@ -30,7 +30,7 @@ pipeline {
 				script {
 					dirProject = "${params.dirProject}";
 					git branch: "master", credentialsId: "GitTecnicalUser", url: "https://github.com/Luca-Celardo/UseCaseNEXI.git"
-					echo pippo
+					echo "pippo"
 				}
 			}
 		}
