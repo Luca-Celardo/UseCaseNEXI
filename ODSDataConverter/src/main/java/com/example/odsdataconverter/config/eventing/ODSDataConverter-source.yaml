@@ -1,0 +1,13 @@
+# --- kafka source ---
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: KafkaSource
+metadata:
+  name: ods-dataconverter-kafka-source
+spec:
+  consumerGroup: ods-filemanager-consumer-group-id
+  bootstrapServers: my-cluster-kafka-bootstrap.kafka:9092
+  topics: dataconverter-source-topic
+  sink:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    name: ods-filemanager-service
