@@ -72,7 +72,7 @@ pipeline {
 						docker.withRegistry("http://${params.dockerRegistry}", "dockerRegistryUser"){
 							app.push()
 						}
-						sh "docker rmi ${params.dockerRegistry}/${pom.artifactId}:${pom.version}"
+						sh "docker rmi ${params.dockerRegistry}/${pom.artifactId}:${pom.version}"*/
 					}
 				}
 			}
@@ -111,7 +111,7 @@ pipeline {
 					}
 				}
 			}
-		}*/
+		}
 		stage('Kubernetes - Deploy') {
 			steps {
 				script {
