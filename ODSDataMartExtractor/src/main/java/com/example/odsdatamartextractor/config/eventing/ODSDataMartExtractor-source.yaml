@@ -1,0 +1,13 @@
+# --- kafka source ---
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: KafkaSource
+metadata:
+  name: ods-datamartextractor-kafka-source
+spec:
+  consumerGroup: ods-dataconverter-consumer-group-id
+  bootstrapServers: my-cluster-kafka-bootstrap.kafka:9092
+  topics: datamartextractor-source-topic
+  sink:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    name: ods-dataconverter-service
