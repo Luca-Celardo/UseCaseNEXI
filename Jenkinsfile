@@ -80,11 +80,11 @@ pipeline {
 		/*stage ('Parameters Injection') {
 			steps {
 				script {
-					/*if(params.deployConfigMap) {
+					if(params.deployConfigMap) {
 						echo "Injcet parameter for ConfigMap"
 						sh "sed -i 's/<NAMESPACE>/${params.namespaceService}/'  kube/deployment-config.yml"
 						sh "sed -i 's/<ARTIFACT_ID>/${pom.artifactId}/'  kube/deployment-config.yml"
-					}*/
+					}
 					if(params.deployApplication) {
 						echo "Inject parameter for Application"
 						sh "sed -i 's/<NAMESPACE>/${params.namespaceService}/'  kube/deployment-application.yml"
