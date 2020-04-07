@@ -1,5 +1,3 @@
-@Library('k8s-mgmt-library')_
-
 def dirProject 
 def app
 def pom
