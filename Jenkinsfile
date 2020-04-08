@@ -37,12 +37,9 @@ pipeline {
 			steps {
 				script {
 					dir("${dirProject}") {
-						echo "pippo1"
 						bat "mvn -B clean install -DskipTests=true"
-						echo "pippo2"
 						pom = readMavenPom file: 'pom.xml'
 						def version = pom.version
-						echo "pippo3"
                     	majorVersion = version.tokenize('.')[0]
 					}
 				}
@@ -52,7 +49,7 @@ pipeline {
 			steps {
 				script {
 					dir("${dirProject}") {
-						sh "mvn -B package -DskipTests=true"
+						bat "mvn -B package -DskipTests=true"
 					}
 				}
 			}
