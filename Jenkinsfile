@@ -59,8 +59,7 @@ pipeline {
 			steps {
 				script {
 					dir("${dirProject}") {
-						//bat "docker build -t ${params.dockerRegistry}/${pom.artifactId}:${pom.version}"
-						echo "artifactId=${pom.artifactId}:Version=${pom.version}:majorversion=${majorVersion}"
+						bat "docker build -t lucacelardo/${pom.artifactId}:${pom.version} -f Dockerfile ."
 					}
 				}
 			}
