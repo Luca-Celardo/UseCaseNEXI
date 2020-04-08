@@ -29,8 +29,7 @@ pipeline {
 			steps {
 				script {
 					dirProject = "${params.dirProject}";
-					git branch: "master", credentialsId: "GitTecnicalUser", url: "https://github.com/Luca-Celardo/UseCaseNEXI.git"
-					echo "pippo"
+					git branch: "master", url: "https://github.com/Luca-Celardo/UseCaseNEXI.git"
 				}
 			}
 		}
@@ -38,9 +37,12 @@ pipeline {
 			steps {
 				script {
 					dir("${dirProject}") {
-						sh "mvn -B clean install -DskipTests=true"
+						echo "pippo1"
+						bat "mvn -B clean install -DskipTests=true"
+						echo "pippo2"
 						pom = readMavenPom file: 'pom.xml'
 						def version = pom.version
+						echo "pippo3"
                     	majorVersion = version.tokenize('.')[0]
 					}
 				}
