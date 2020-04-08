@@ -1,6 +1,7 @@
 def dirProject 
 def app
 def pom
+def version
 def majorVersion
 
 pipeline {
@@ -39,7 +40,7 @@ pipeline {
 					dir("${dirProject}") {
 						bat "mvn -B clean install -DskipTests=true"
 						pom = readMavenPom file: 'pom.xml'
-						def version = pom.version
+						version = pom.version
                     	majorVersion = version.tokenize('.')[0]
 					}
 				}
@@ -58,7 +59,8 @@ pipeline {
 			steps {
 				script {
 					dir("${dirProject}") {
-					
+						//bat "docker build -t ${params.dockerRegistry}/${pom.artifactId}:${pom.version}"
+						echo "artifactId=${pom.artifactId}:Version=${pom.version}:majorversion=${majorVersion}"
 					}
 				}
 			}
