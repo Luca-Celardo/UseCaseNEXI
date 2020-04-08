@@ -59,7 +59,7 @@ pipeline {
 			steps {
 				script {
 					dir("${dirProject}") {
-						bat "docker build -t lucacelardo/${pom.artifactId}:${pom.version} -f Dockerfile ."
+						bat "docker build -t lucacelardo/odsdatamartextractor:${pom.version} -f Dockerfile ."
 					}
 				}
 			}
