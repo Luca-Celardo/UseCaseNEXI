@@ -62,7 +62,8 @@ pipeline {
 				script {
 					dir("${dirProject}") {
 						bat "docker build -t lucacelardo/odsdatamartextractor:${pom.version} -f Dockerfile ."
-						bat "docker login -u ${params.dockerHubUser} -p ${params.dockerHubPass} docker.io"
+						//bat "docker login -u ${params.dockerHubUser} -p ${params.dockerHubPass} docker.io"
+						bat "docker login -u ${params.dockerHubUser} --password-stdin docker.io"
 						bat "docker push lucacelardo/odsdatamartextractor:${pom.version}"
 					}
 				}
