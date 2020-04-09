@@ -10,10 +10,12 @@ pipeline {
 	parameters {
         string(name: 'dirProject', defaultValue: 'ODSDataMartExtractor', description: 'Cartella effettiva del progetto')
         string(name: 'dockerRegistry', defaultValue: 'tcp://192.168.99.121:2376', description: 'Docker registry')
+		string(name: 'dockerHubUser', defaultValue: 'lucacelardo', description: 'Docker Hub username')
+		string(name: 'dockerHubPass', defaultValue: '', description: 'Docker Hub password')
 		string(name: 'namespaceService', defaultValue: 'bu-arc', description: 'Namespace')
 		string(name: 'containerPort', defaultValue: '8080', description: 'Container service port')
 		string(name: 'contextRoot', defaultValue: '/nexi-extractor', description: 'Application context root')
-		booleanParam(name: 'deployApplication', defaultValue: true, description: 'True if you want to deploy the application')
+		booleanParam(name: 'deployApplication', defaultValue: false, description: 'True if you want to deploy the application')
 		//booleanParam(name: 'deployConfigMap', defaultValue: false, description: 'True only if you want to update ConfigMap')
 		booleanParam(name: 'deployService', defaultValue: false, description: 'True only for the First Deploy')
 		booleanParam(name: 'deployIngress', defaultValue: false, description: 'True only for the First Deploy')
@@ -60,7 +62,7 @@ pipeline {
 				script {
 					dir("${dirProject}") {
 						bat "docker build -t lucacelardo/odsdatamartextractor:${pom.version} -f Dockerfile ."
-						bat "docker login -u ${lucacelardo} -p ${7tT(k3xF4ZT$#xp} docker.io"
+						bat "docker login -u ${params.dockerHubUser} -p ${params.dockerHubPass} docker.io"
 						bat "docker push lucacelardo/odsdatamartextractor:${pom.version}"
 					}
 				}
