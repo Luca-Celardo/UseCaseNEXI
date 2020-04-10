@@ -111,7 +111,7 @@ pipeline {
 		stage('Kubernetes - Deploy') {
 			steps {
 				script {
-					withKubeConfig(caCertificate: '', credentialsId: kubeUser, serverUrl: kubeEndpoint) {
+					//withKubeConfig(caCertificate: '', credentialsId: kubeUser, serverUrl: kubeEndpoint) {
 						if(params.deployConfigMap) {
 							sh "kubectl apply -f kube/deployment-config.yml"
 						}
@@ -127,7 +127,7 @@ pipeline {
 						if(params.deployIngress) {
 							sh "kubectl apply -f kube/deployment-ingress.yml"
 						}
-					}
+					//}
 				}
 			}
 		}
