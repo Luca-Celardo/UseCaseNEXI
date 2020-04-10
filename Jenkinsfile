@@ -9,7 +9,7 @@ pipeline {
 
 	parameters {
         string(name: 'dirService', defaultValue: 'ODSDataMartExtractor', description: 'Service project directory')
-		string(name: 'dirServiceConfig', defaultValue: '/src/main/java/com/example/odsdatamartextractor/config/serving', description: 'Service project configuration directory')
+		string(name: 'dirServiceConfig', defaultValue: 'ODSDataMartExtractor/src/main/java/com/example/odsdatamartextractor/config/serving', description: 'Service project configuration directory')
 		string(name: 'namespaceService', defaultValue: 'default', description: 'Namespace')
         string(name: 'dockerRegistry', defaultValue: 'tcp://192.168.99.121:2376', description: 'Docker registry')
 		string(name: 'dockerHubUser', defaultValue: 'lucacelardo', description: 'Docker Hub username')
