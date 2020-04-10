@@ -89,7 +89,7 @@ pipeline {
 					if(params.deployService) {
 						dir("${dirServiceConfig}") {
 							echo "Inject parameter for Service"
-							bat '@powershell -Command "get-content ODSDataMartExtractor-service.yaml | %{$_ -replace \"<NAMESPACE>\",\"params.namespaceService\"}"'
+							bat '@powershell -Command "get-content ODSDataMartExtractor-service.yaml | %{$_ -replace \'<NAMESPACE>\',\'params.namespaceService\'}"'
 							//bat "sed -i 's/<NAMESPACE>/${params.namespaceService}/'  kube/deployment-service.yml"
 							//bat "sed -i 's/<DOCKER_HUB_USER>/${params.dockerHubUser}/'  kube/deployment-service.yml"
 							//bat "sed -i 's/<DOCKER_HUB_REPOSITORY>/${params.dockerHubRepo}/'  kube/deployment-service.yml"
