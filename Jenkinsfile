@@ -17,7 +17,7 @@ pipeline {
 		string(name: 'dockerHubRepo', defaultValue: 'odsdatamartextractor', description: 'Docker Hub repository name of the project')
 		string(name: 'containerPort', defaultValue: '8080', description: 'Container service port')
 		booleanParam(name: 'deployApplication', defaultValue: false, description: 'True if you want to deploy the application')
-		booleanParam(name: 'deployService', defaultValue: false, description: 'True only for the First Deploy')
+		booleanParam(name: 'deployService', defaultValue: true, description: 'True only for the First Deploy')
 	}
 
 	environment {
@@ -76,7 +76,7 @@ pipeline {
 						
 					if(params.deployService) {
 						dir("${dirServiceConfig}") {
-							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --kubeconfig='/Users/Luca/.kube/config'"
+							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --kubeconfig='/c/Users/Luca/.kube/config'"
 						}
 					}
 				}
