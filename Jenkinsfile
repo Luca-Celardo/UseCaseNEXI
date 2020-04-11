@@ -60,9 +60,9 @@ pipeline {
 			steps {
 				script {
 					dir("${dirService}") {
-						bat "docker build -t ${params.dockerHubUser}/${params.dockerHubRepo}:${pom.version} -f Dockerfile ."
-						bat "docker login -u ${params.dockerHubUser} -p ${params.dockerHubPass} docker.io"
-						bat "docker push ${params.dockerHubUser}/${params.dockerHubRepo}:${pom.version}"
+						//bat "docker build -t ${params.dockerHubUser}/${params.dockerHubRepo}:${pom.version} -f Dockerfile ."
+						//bat "docker login -u ${params.dockerHubUser} -p ${params.dockerHubPass} docker.io"
+						//bat "docker push ${params.dockerHubUser}/${params.dockerHubRepo}:${pom.version}"
 					}
 				}
 			}
@@ -76,7 +76,7 @@ pipeline {
 						
 					if(params.deployService) {
 						dir("${dirServiceConfig}") {
-							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --kubeconfig='C:/Users/Luca/.kube/config'"
+							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --kubeconfig='/Users/Luca/.kube/config'"
 						}
 					}
 				}
