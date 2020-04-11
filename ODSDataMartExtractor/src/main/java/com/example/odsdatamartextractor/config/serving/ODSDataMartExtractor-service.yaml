@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
   name: ods-datamartextractor-service
-  namespace: <NAMESPACE>
+  namespace: default
 spec:
   template:
     spec:
