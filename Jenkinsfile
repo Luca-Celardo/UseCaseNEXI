@@ -76,7 +76,7 @@ pipeline {
 						
 					if(params.deployService) {
 						dir("${dirServiceConfig}") {
-							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --kubeconfig='C:\Users\Luca\.kube\config'"
+							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --kubeconfig='C:/Users/Luca/.kube/config'"
 						}
 					}
 				}
