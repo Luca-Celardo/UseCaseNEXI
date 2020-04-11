@@ -1,0 +1,75 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+  # name: nexi-deployment
+  # namespace: $NAMESPACE
+# spec:
+  # replicas: 1
+  # selector:
+    # matchLabels:
+      # app: nexi-deployment
+  # template:
+    # metadata:
+      # labels:
+        # app: nexi-deployment
+        # tier: CORE
+    # spec:
+      # volumes:
+        # - name: nas
+          # nfs:
+            # path: /
+            # server: 10.6.21.26
+      # containers:
+        # - name: my-container
+          # image: $DOCKER_REGISTRY/$ARTIFACT_ID:$VERSION
+          # env:
+            # - name: KUBERNETES_NAMESPACE
+              # value: $NAMESPACE
+          # volumeMounts:
+            # - name: nas # This is the name of the volume we set at the pod level
+              # mountPath: /vol # Where to mount this directory in our container
+          # ports:
+            # - containerPort: $CONTAINER_PORT
+          # imagePullPolicy: Always
+      # restartPolicy: Always
+   
+   
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odsdataconverter-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odsdataconverter-deployment
+  template:
+    metadata:
+      labels:
+        app: odsdataconverter-deployment
+        tier: CORE
+    spec:
+      volumes:
+        #- name: nas
+          #nfs:
+            #path: /C/Users/Luca/IdeaProjects/UseCaseNEXI/nfs
+            #server: 192.168.43.32
+        - name: nas
+          persistentVolumeClaim:
+            claimName: odsdataconverter-persistent-volume-claim
+      containers:
+        - name: user-container
+          image: docker.io/lucacelardo/odsdataconverter:1.0.0
+          securityContext:
+            privileged: true
+          env:
+            - name: KUBERNETES_NAMESPACE
+              value: default
+          volumeMounts:
+            - name: nas # This is the name of the volume we set at the pod level
+              mountPath: /app/nfs # Where to mount this directory in our container
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+      restartPolicy: Always

@@ -1,0 +1,12 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: CronJobSource
+metadata:
+  name: ods-cronjob-source
+  namespace: default
+spec:
+  schedule: "*/12 * * * *"
+  data: '{"message": "ODSDataMartExtractor can get Data Mart files from DB!"}'
+  sink:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    name: ods-datamartextractor-service
