@@ -76,7 +76,7 @@ pipeline {
 						
 					if(params.deployService) {
 						dir("${dirServiceConfig}") {
-							bat "kubectl apply -f ODSDataMartExtractor-service.yaml"
+							bat "kubectl apply -f ODSDataMartExtractor-service.yaml --as='nexiusecase'"
 						}
 					}
 				}
