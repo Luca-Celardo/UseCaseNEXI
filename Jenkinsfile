@@ -66,7 +66,7 @@ pipeline {
 			steps {
 				script {
 					if(params.deployApplication) {
-						dir("/config") {
+						dir("/configurations") {
 							bat "kubectl apply -f cronjob-source.yaml --kubeconfig ${params.kubeconfigPath}"
 							bat "kubectl apply -f kafka-datamartextractor-source-topic.yaml --kubeconfig ${params.kubeconfigPath}"
 							bat "kubectl apply -f kafka-datamartextractor-topic.yaml --kubeconfig ${params.kubeconfigPath}"
