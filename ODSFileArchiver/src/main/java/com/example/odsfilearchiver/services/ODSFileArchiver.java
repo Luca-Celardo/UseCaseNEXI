@@ -45,7 +45,7 @@ public class ODSFileArchiver {
         }
     }
 
-    /*@KafkaListener(topics = "filemanager-topic", groupId = "ods-filearchiver-consumer-group-id")
+    @KafkaListener(topics = "filemanager-topic", groupId = "ods-filearchiver-consumer-group-id")
     public void consumeKafkaEvent(String ack) {
         logger.info("Consumed event -> Data=[{}]", ack);
         List<ODS> readyOdsFiles = getAllReadyOdsFiles();
@@ -54,7 +54,7 @@ public class ODSFileArchiver {
                 insertOdsFile(ods);
             }
         }
-    }*/
+    }
 
     public List<ODS> getAllReadyOdsFiles() {
         List<ODS> odsList = odsMapper.getAllReadyOdsFiles();
