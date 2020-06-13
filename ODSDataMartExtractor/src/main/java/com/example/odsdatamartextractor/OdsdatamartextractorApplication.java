@@ -33,7 +33,7 @@ public class OdsdatamartextractorApplication {
                 }
                 odsDataMartExtractor.sendEvent(new DataMart(0, "interface-id", "type"), "datamartextractor-source-topic");
             }
-            TimeUnit.SECONDS.sleep(20);
+            TimeUnit.SECONDS.sleep(5);
         }
     }
 }
