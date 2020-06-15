@@ -23,7 +23,7 @@ public class OdsdatamartextractorApplication {
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(OdsdatamartextractorApplication.class, args);
 
-        Date finishTime = new Date(System.currentTimeMillis() + 300000);
+        Date finishTime = new Date(System.currentTimeMillis() + 900000);
 
         while(System.currentTimeMillis() < finishTime.getTime()) {
             List<DataMart> dataMartFiles = odsDataMartExtractor.getAllDataMarts();
@@ -33,7 +33,7 @@ public class OdsdatamartextractorApplication {
                 }
                 odsDataMartExtractor.sendEvent(new DataMart(0, "interface-id", "type"), "datamartextractor-source-topic");
             }
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(20);
         }
     }
 }
